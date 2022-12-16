@@ -1,31 +1,57 @@
 //function to update gridTemplateColumns
-function updateTemplate(number){
+function updateTemplate(){
   let string = '';
-  for (let i=1; i<=number;i++){
-    string += ' auto';
-    console.log(string);
-  }
+  string =`repeat(${divSide}, 1fr)`;
   return string;
 }
 
+//create function to update the sketchpad
+function updateSketchPad(){
+  
+  //create a loop to append the child div
+  for(let i=1; i<=divSize; i++){
+    //create a grid element div
+    const childDiv = document.createElement("div");
+    // set the child class name
+    childDiv.className = 'grid-items';
+    //set the child to listen to event and change the color
+    childDiv.addEventListener("mousedown",function(){
+      childDiv.style.backgroundColor = 'white';
+    });
+   
+    //append the element to the container
+    gridContainer.appendChild(childDiv);
+
+  };
+
+  //create a method to access and update grid template columns accordingly
+  document.getElementById(
+    "gridContainer"
+  ).style.gridTemplateColumns = updateTemplate(divSide);
+
+};
+
+
 //access a variable grid container
-const divContainer = document.querySelector(".container")
+const gridContainer = document.querySelector("#gridContainer");
 //create a variable holds the size of the divs
 const divSide = 16; //16x16 divs
 const divSize = Math.pow(divSide, 2);
-//create a looop function to append the child div
-for(let i=1; i<=divSize; i++){
-  //create a grid element div
-  const childDiv = document.createElement("div");
-  childDiv.innerHTML = `child ${i}`;
-  childDiv.className = 'div-items' 
-  //append the element to the container
-  divContainer.appendChild(childDiv);
+//update the sketchpad with the above parameters
+updateSketchPad();
 
-}
-//create a method to access and update grid template columns accordingly
-document.getElementById(
-  "divContainer"
-).style.gridTemplateColumns = updateTemplate(divSide);
+//delegate the event listener to the container for mouseover event
+gridContainer.addEventListener(
+  "mouseover", function(e) {
+    const target = e.target;
+    if (target.className === 'grid-items'){ 
+      e.target.style.backgroundColor= "black";
+    };
+   
+  }
+);
+
+
+
 
 

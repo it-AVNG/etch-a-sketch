@@ -5,18 +5,29 @@
   font-family: 'Lato', sans-serif;
 }
 
+body{
+  position: relative;
+}
+
 .container{
+  border: solid 1px;
   /*turn on grid*/
   display: grid;
   /*set grid template starter*/
-  grid-template-columns: none;
-}
 
-/*styling grid item*/
-.div-items {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
+  grid-template-columns: none;
+  /*center the div*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,60%);
+  /* limiting the size of the container */
+  width: 500px;
+  height: 500px;
 }
+.grid-items{
+  transition: background-color 0.15s;
+  background-color:transparent;
+  
+}
+/*styling grid item*/

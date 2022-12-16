@@ -32,7 +32,26 @@ function removeAllChildNodes(parent){
   }
 }
 
-
+//afunction to randomize color
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
+function getRainbow(object){
+  let hue = getRndInteger(0,360);
+  let saturation = getRndInteger(0,100);
+  let light = getRndInteger(0,100);
+  object.style.backgroundColor = `hsl(${hue} ,${saturation}%,${light}%)`;
+}
+// a function to change all of the class in the grid
+function setRainbowClass(gridContainer){
+  let children = gridContainer.children;
+  
+  for(let i=0;i<children.length;i++){
+    let child = children[i];
+    child.className="grid-items-rainbow";
+    
+  }
+}
 
 
 
@@ -63,6 +82,12 @@ gridContainer.addEventListener(
     if (target.className === 'grid-items'){ 
       e.target.style.backgroundColor= "black";
     };
+
+    //LGBTQ+ mode
+    if(target.className === 'grid-items-rainbow'){
+      getRainbow(e.target);
+      console.log(e.target)
+    }
   }
 );
 
@@ -70,7 +95,6 @@ gridContainer.addEventListener(
 //listen to slider changes
 slider.addEventListener('input', function(){
   //update the grid container with the change
-
   //remove the previous node
   removeAllChildNodes(gridContainer);
   //update the new node

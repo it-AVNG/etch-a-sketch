@@ -17,7 +17,15 @@
   <title>Etch-a-Sketch</title>
 </head>
 <body>
-  <div id="settingContainer">Settings</div>
+  
+  <div id="sliderContainer">
+    <p>Drag the slider to display the grid side value.</p>
+    <input type="range" min="1" max="100" value="16" class="slider" name="gridSide" id="gridSide">
+    <p>Value: <span id="sliderVal"></span></p>  
+  </div>
+
+  <button onclick="removeAllChildNodes(gridContainer); 
+  updateGridContainer(gridSide);">Reset</button>
   <div id="gridContainer" class="container">
   </div>
   <script src="./javascript.js"></script>

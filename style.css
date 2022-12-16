@@ -2,20 +2,26 @@
   margin:0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family:monospace;
+  font-size: 40px;
 }
 
 body{
   position: relative;
+  background-color: #e9c46a;
 }
 
 .container{
+  padding: 2px;
   border: solid 1px;
+  border-radius: 5px;
+  box-shadow: 5px 5px #264653 ;
+  background-color: antiquewhite;
   /*turn on grid*/
   display: grid;
   /*set grid template starter*/
 
-  grid-template-columns: none;
+  
   /*center the div*/
   position: absolute;
   top: 50%;
